@@ -2,16 +2,23 @@
 using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Mvc;
 using AspNetCoreAngular2Seed.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace AspNetCoreAngular2Seed.Controllers
 {
+    /// <summary>
+    /// Controller handling authentication requests
+    /// </summary>
     [Route("api/[controller]")]
     public class AccountController : Controller
     {
+        /// <summary>
+        /// Login user POST
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost("authenticate")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel user)
         {
@@ -49,6 +56,10 @@ namespace AspNetCoreAngular2Seed.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Logout POST
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
@@ -65,6 +76,11 @@ namespace AspNetCoreAngular2Seed.Controllers
 
         }
 
+        /// <summary>
+        /// Registration POST
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [Route("register")]
         [HttpPost]
         public IActionResult Register([FromBody] RegistrationViewModel user)
@@ -74,6 +90,7 @@ namespace AspNetCoreAngular2Seed.Controllers
 
             try
             {
+                //validate the Model
                 if (ModelState.IsValid)
                 {
 
@@ -93,12 +110,12 @@ namespace AspNetCoreAngular2Seed.Controllers
                     };
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 registrationResult = new GenericResult()
                 {
                     Succeeded = false,
-                    Message = ex.Message
+                    Message = "Failed to register"
                 };
 
             }
