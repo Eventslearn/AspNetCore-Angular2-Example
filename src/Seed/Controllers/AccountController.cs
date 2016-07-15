@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNet.Authentication.Cookies;
+﻿using AspNetCoreAngular2Seed.Infrastructure.Core;
+using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Mvc;
-using PhotoGallery.Infrastructure.Core;
-using PhotoGallery.ViewModels;
+using AspNetCoreAngular2Seed.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace TestApp.Controllers
+namespace AspNetCoreAngular2Seed.Controllers
 {
     [Route("api/[controller]")]
     public class AccountController : Controller
@@ -22,7 +21,7 @@ namespace TestApp.Controllers
             {
                 var claims = new List<Claim>();
 
-                var claim = new Claim(ClaimTypes.Role, "Admin", ClaimValueTypes.String, user.Username);
+                var claim = new Claim(ClaimTypes.Role, "Username", ClaimValueTypes.String, user.Username);
 
                 await HttpContext.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme)),
@@ -32,18 +31,17 @@ namespace TestApp.Controllers
                 authenticationResult = new GenericResult()
                 {
                     Succeeded = true,
-                    Message = "Authentication succeeded"
+                    Message = "Authenticated"
                 };
 
             }
-            catch (Exception ex)
+            catch
             {
                 authenticationResult = new GenericResult()
                 {
                     Succeeded = false,
-                    Message = ex.Message
+                    Message = "Failed to authenticate"
                 };
-
 
             }
 
@@ -57,6 +55,7 @@ namespace TestApp.Controllers
             try
             {
                 await HttpContext.Authentication.SignOutAsync("Cookies");
+
                 return Ok();
             }
             catch 
@@ -105,6 +104,7 @@ namespace TestApp.Controllers
             }
 
             result = new ObjectResult(registrationResult);
+
             return result;
         }
     }

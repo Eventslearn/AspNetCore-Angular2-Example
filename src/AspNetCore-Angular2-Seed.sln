@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{251DB753-4F34-4E32-BAFF-F54BEC859EEF}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		Seed\global.json = Seed\global.json
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Seed", "Seed\Seed.xproj", "{F961561D-6CFF-4C27-BA42-7C6BAF9E7EEE}"

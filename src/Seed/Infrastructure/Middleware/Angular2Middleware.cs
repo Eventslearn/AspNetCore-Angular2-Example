@@ -1,24 +1,21 @@
 ﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
-namespace TestApp.Infrastructure.Middleware
+namespace AspNetCoreAngular2Seed.Infrastructure.Middleware
 {
-    //http://stackoverflow.com/questions/31415052/angular-2-0-router-not-working-on-reloading-the-browser
+    /// <summary>
+    /// A class to redirect any request other than index.html or starts with '/api/' to index.html
+    /// This is required to implement Angular2 path location strategy for URL routing
+    /// //http://stackoverflow.com/questions/31415052/angular-2-0-router-not-working-on-reloading-the-browser
+    /// </summary>
     public class Angular2Middleware
     {
-        private readonly RequestDelegate _next;
+        private readonly RequestDelegate next;
 
         public Angular2Middleware(RequestDelegate next)
         {
-            _next = next;
+            this.next = next;
         }
 
         public async Task Invoke(HttpContext context)
@@ -31,7 +28,7 @@ namespace TestApp.Infrastructure.Middleware
             {
                 context.Request.Path = new PathString("/index.html");
             }
-                await _next.Invoke(context);
+                await next.Invoke(context);
 
         }
     }

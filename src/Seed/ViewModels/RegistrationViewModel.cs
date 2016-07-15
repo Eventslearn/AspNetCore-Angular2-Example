@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace PhotoGallery.ViewModels
+/// <summary>
+/// View model to serialize new user registration request from Angular2 
+/// </summary>
+namespace AspNetCoreAngular2Seed.ViewModels
 {
     public class RegistrationViewModel
     {
