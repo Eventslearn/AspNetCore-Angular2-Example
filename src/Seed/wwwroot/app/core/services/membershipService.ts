@@ -4,6 +4,9 @@ import { DataService } from './dataService';
 import { Registration } from '../domain/registration';
 import { User } from '../domain/user';
 
+//A class to manage user authentication
+//uses local storage to save user authentication cookies
+
 @Injectable()
 export class MembershipService {
 
@@ -11,6 +14,7 @@ export class MembershipService {
     private accountLoginAPI: string = 'api/account/authenticate/';
     private accountLogoutAPI: string = 'api/account/logout/';
 
+    //inject data service
     constructor(public accountService: DataService) { }
 
     register(newUser: Registration) {

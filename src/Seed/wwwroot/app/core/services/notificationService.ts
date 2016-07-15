@@ -1,5 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 
+//uses alertify js library to notify user of events
+
 declare var alertify: any;
 
 @Injectable()

@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='clean-lib, build-spa' Clean='clean-lib' ProjectOpened='clean-lib, build-spa, watch' />
+/// <binding Clean='clean-lib' ProjectOpened='clean-lib, build-spa, watch' />
 var gulp = require('gulp'),
     merge = require('merge'),
     fs = require("fs"),

@@ -15,7 +15,6 @@ import { AppRoutes, APP_ROUTES } from './routes';
 import { Routes, Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { DataService } from './core/services/dataService';
 import { MembershipService } from './core/services/membershipService';
-import { UtilityService } from './core/services/utilityService';
 import { User } from './core/domain/user';
 
 @Component({
@@ -67,5 +66,5 @@ class AppBaseRequestOptions extends BaseRequestOptions {
 bootstrap(AppRoot, [HTTP_PROVIDERS, ROUTER_PROVIDERS,
     provide(RequestOptions, { useClass: AppBaseRequestOptions }),
     provide(LocationStrategy, { useClass: PathLocationStrategy }),
-    DataService, MembershipService, UtilityService])
+    DataService, MembershipService])
     .catch(err => console.error(err));
